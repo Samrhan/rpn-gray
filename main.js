@@ -1,10 +1,13 @@
 function rpn(sequence) {
-    const number = Number.parseInt(sequence);
-    if (Number.isNaN(number)) {
-        return []
-    } else {
-        return [number]
-    }
+    const parsedSequence = sequence.split(" ");
+    const stack = [];
+    parsedSequence.forEach((element) => {
+        const number = parseInt(element);
+        if (!isNaN(number)) {
+            stack.push(number);
+        }
+    })
+    return stack;
 }
 
 module.exports = rpn

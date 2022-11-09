@@ -16,38 +16,36 @@ function sqrt(stack) {
     stack.push(Math.sqrt(first));
 }
 
-function max(stack){
+function max(stack) {
     const max = Math.max(...stack);
     stack.splice(0);
     stack.push(max);
 }
 
+const operations = {
+    '+': sum,
+    '-': minus,
+    'sqrt': sqrt,
+    'max': max
+}
+
+function splitSequence(sequence) {
+    return sequence.split(" ");
+}
+
+function parseSequence(element, stack) {
+    const number = parseInt(element);
+    if (isNaN(number) && operations[element]) {
+        operations[element](stack);
+    } else if (!isNaN(number)) {
+        stack.push(number);
+    }
+}
+
 function rpn(sequence) {
-    const parsedSequence = sequence.split(" ");
+    const parsedSequence = splitSequence(sequence);
     const stack = [];
-    parsedSequence.forEach((element) => {
-        const number = parseInt(element);
-        if (isNaN(number)) {
-            switch (element) {
-                case '+':
-                    sum(stack);
-                    break;
-                case '-':
-                    minus(stack);
-                    break;
-                case 'sqrt':
-                    sqrt(stack);
-                    break;
-                case 'max':
-                    max(stack);
-                    break;
-                default:
-                    break;
-            }
-        } else {
-            stack.push(number);
-        }
-    })
+    parsedSequence.forEach((e) => parseSequence(e, stack));
     return stack;
 }
 

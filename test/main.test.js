@@ -19,5 +19,8 @@ describe('RPN', () => {
     it('should support multiple operations', () => {
         expect(rpn('4 2 + 3 -')).toEqual([3]);
     });
+    it('should add the square root to the stack given a sequence with one number and a sqrt', () => {
+        expect(rpn('4 sqrt')).toEqual([2]);
+    });
 
 })

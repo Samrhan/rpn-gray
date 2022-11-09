@@ -11,6 +11,11 @@ function minus(stack) {
     stack.push(second - first);
 }
 
+function sqrt(stack) {
+    const first = stack.pop();
+    stack.push(Math.sqrt(first));
+}
+
 function rpn(sequence) {
     const parsedSequence = sequence.split(" ");
     const stack = [];
@@ -23,6 +28,9 @@ function rpn(sequence) {
                     break;
                 case '-':
                     minus(stack);
+                    break;
+                case 'sqrt':
+                    sqrt(stack);
                     break;
                 default:
                     break;

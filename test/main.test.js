@@ -12,5 +12,9 @@ describe('RPN', () => {
     });
     it('should add the sum to the stack given a sequence with two numbers and a +', () => {
         expect(rpn('1 2 +')).toEqual([3]);
-    })
+    });
+    it('should add the difference to the stack given a sequence with two numbers and a -', () => {
+        expect(rpn('2 1 -')).toEqual([1]);
+    });
+
 })

@@ -16,6 +16,12 @@ function sqrt(stack) {
     stack.push(Math.sqrt(first));
 }
 
+function max(stack){
+    const max = Math.max(...stack);
+    stack.splice(0);
+    stack.push(max);
+}
+
 function rpn(sequence) {
     const parsedSequence = sequence.split(" ");
     const stack = [];
@@ -31,6 +37,9 @@ function rpn(sequence) {
                     break;
                 case 'sqrt':
                     sqrt(stack);
+                    break;
+                case 'max':
+                    max(stack);
                     break;
                 default:
                     break;

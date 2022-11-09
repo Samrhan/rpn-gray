@@ -22,5 +22,8 @@ describe('RPN', () => {
     it('should add the square root to the stack given a sequence with one number and a sqrt', () => {
         expect(rpn('4 sqrt')).toEqual([2]);
     });
+    it("should add the max number to the stack given a sequence with n numbers and a max", () => {
+       expect(rpn('3 4 10 2 3 max')).toEqual([10]);
+    });
 
 })
